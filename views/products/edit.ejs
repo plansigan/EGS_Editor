@@ -1,0 +1,147 @@
+<% include ../partials/header%>
+<div class="container">
+  <br>
+    <div class="container">
+      <h2 class="text-center">Edit Product: "<%=data[0][0].Name%>"</h2>
+    </div>
+    <br>
+    <div class="ui divider">
+      <form class="ui form segment" action="/products/<%=data[0][0].Code%>?_method=PUT" method="POST">
+        <div class="two fields">
+          <div class="twelve wide field">
+            <label for="Name">Name:</label>
+            <input class="form-control" type="text" name="product[name]" value="<%=data[0][0].Name%>">
+          </div>
+          <div class="four wide field">
+            <label for="Number">Number:</label>
+            <input class="form-control" type="text" name="product[number]" value="<%=data[0][0].Number%>"  disabled>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="twelve wide field">
+            <label for="Supplier">Supplier:</label>
+            <input class="form-control" type="text" name="product[supplier]" value="<%=data[0][0].Supplier%>">
+          </div>
+          <div class="four wide field">
+            <label for="Category">Category:</label>
+            <input class="form-control" type="text" name="product[category]" value="<%=data[0][0].Category%>">
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="twelve wide field">
+            <label for="Allergens">Allergens:</label>
+            <input class="form-control" type="text" name="product[allergens]" value="<%=data[0][0].Allergens%>">
+          </div>
+          <div class="four wide field">
+            <label for="Barcode">Barcode:</label>
+            <input class="form-control" type="text" name="product[barcode]" value="<%=data[0][0].Barcode%>">
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="twelve wide field">
+            <label for="Productivity">Productivity:</label>
+            <input class="form-control" type="text" name="product[productivity]" value="<%=data[0][0].Productivity%>">
+          </div>
+          <div class="four wide field">
+            <label for="CountryOfOrigin">Country of Origin:</label>
+            <input class="form-control" type="text" name="product[countryOfOrigin]" value="<%=data[0][0].CountryOrigin%>">
+          </div>
+        </div>
+        <div class="field">
+          <label for="Brand">Brand:</label>
+          <input class="form-control" type="text" name="product[brand]" value="<%=data[0][0].Brand%>">
+        </div>
+        <div class="field">
+          <label for="Declaration">Declaration:</label>
+          <input class="form-control" type="text" name="product[declaration]" value="<%=data[0][0].Declaration%>">
+        </div>
+        <div class="field">
+          <label for="CookingTip">Cooking Tip:</label>
+          <input class="form-control" type="text" name="product[cookingTip]" value="<%=data[0][0].CookingTip%>">
+        </div>
+        <div class="field">
+          <label for="Refinement">Refinement:</label>
+          <input class="form-control" type="text" name="product[refinement]" value="<%=data[0][0].Refinement%>">
+        </div>
+        <div class="field">
+          <label for="Storage">Storage:</label>
+          <input class="form-control" type="text" name="product[storage]" value="<%=data[0][0].Storage%>">
+        </div>
+        <div class="field">
+          <label for="Attachment">Attachment:</label>
+          <input class="form-control" type="text" name="product[attachment]" value="<%=data[0][0].Attachment%>">
+        </div>
+        <div class="field">
+          <label for="SpecificDetermination">Specific Determination:</label>
+          <input class="form-control" type="text" name="product[specificDetermination]" value="<%=data[0][0].SpecificDetermination%>">
+        </div>
+        <div class="field">
+          <label for="Description">Description:</label>
+          <textarea rows="2" class="form-control" name="product[description]"><%=data[0][0].Description%></textarea>
+        </div>
+        <div class="field">
+          <label for="Ingredients">Ingredients:</label>
+          <textarea rows="2" class="form-control" name="product[ingredients]"><%=data[0][0].Ingredients%></textarea>
+        </div>
+        <div class="field">
+          <label for="Preparation">Preparation:</label>
+          <textarea rows="2" class="form-control" name="product[preparation]"><%=data[0][0].Preparation%></textarea>
+        </div>
+        <div class="field">
+          <%if(data[1].length > 0){%>
+            <h3 class="ui dividing header">Clients</h3>
+          <%}%>
+          <br>
+          <div class="ui grid">
+            <%data[1].forEach((client)=>{%>
+              <input class='hidden' type="text" name="price[ClientCode]" value="<%=client.ClientCode%>">
+              <div class="four wide  columns">
+                <h4><%=client.Name%></h4>
+                <div class="field">
+                  <label for="Price1">Price1</label>
+                  <div class="ui right labeled input">
+                    <input placeholder="Price1" type="text" name="price[price1]" value="<%=client.Price1%>">
+                    <div class="ui basic label">
+                      <%=client.Unit1%>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="Price2">Price2</label>
+                  <div class="ui right labeled input">
+                    <input placeholder="Price2" type="text" name="price[price2]" value="<%=client.Price2%>">
+                    <div class="ui basic label">
+                      <%=client.Unit2%>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="Price3">Price3</label>
+                  <div class="ui right labeled input">
+                    <input placeholder="Price3" type="text" name="price[price3]" value="<%=client.Price3%>">
+                    <div class="ui basic label">
+                      <%=client.Unit3%>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="Price4">Price4</label>
+                  <div class="ui right labeled input">
+                    <input placeholder="Price4" type="text" name="price[price4]" value="<%=client.Price4%>">
+                    <div class="ui basic label">
+                      <%=client.Unit4%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%})%>
+          </div>
+        </div>
+        <br>
+        <div class="ui form">
+          <button class="ui button green" style="float:left;margin-right:1%">Save</button>
+          <a href="/products/<%=data[0][0].Code%>/view" class="ui button blue">Back to View</a>
+        </div>
+      </form>
+</div>
+<% include ../partials/footer%>

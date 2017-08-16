@@ -1,0 +1,53 @@
+<% include ../partials/header%>
+<script src="/product/product.js"></script>
+<div class="col-md-12">
+  <div class="container">
+    <h1>List of Products</h1>
+    <br>
+    <div ng-app="product" ng-controller="productController"/>
+      <form ng-submit="search()">
+        <div class="ui search">
+          <div class="ui icon input">
+            <input class="prompt" placeholder="Find product base on columns provided" type="text" ng-model="searchName">
+            <i class="search icon"></i>
+          </div>
+        </div>
+      </form>
+      <table id="Datatable" class="ui celled table header-fixed" width="100%">
+        <thead>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Supplier</th>
+          <th>Category</th>
+          <th>Last Updated</th>
+        </thead>
+        <tbody class="list">
+          <tr ng-repeat="product in data">
+            <td><a class="number" href="/products/{{product.Code}}/view">{{ product.Number }}</a></td>
+            <td><a class="name" href="/products/{{product.Code}}/view">{{ product.Name }}</a></td>
+            <td><a class="supplier" href="/products/{{product.Code}}/view">{{ product.Supplier }}</a></td>
+            <td><a class="category" href="/products/{{product.Code}}/view">{{ product.Category }}</a></td>
+            <td><a class="lastupdate" href="/products/{{product.Code}}/view">{{ product.LastUpdated }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <span class="glyphicon glyphicon-cloud-upload"></span>
+            <h2>Upload CSV to Database</h2>
+            <h4>CSV required!</h4>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar"></div>
+            </div>
+            <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+          </div>
+        </div>
+      </div>
+    <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+  </div>
+</div>
+
+<% include ../partials/footer%>

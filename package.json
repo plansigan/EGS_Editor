@@ -1,0 +1,31 @@
+{
+  "name": "egseditor",
+  "version": "1.0.0",
+  "description": "To update products with allergens,nutrients and other into EGSPIM database of CALCMENU",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paolo Lansigan",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "csv-headers": "^1.0.0",
+    "csv-parse": "^1.2.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "formidable": "^1.1.1",
+    "fs": "0.0.1-security",
+    "install": "^0.10.1",
+    "leftpad": "0.0.1",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.9",
+    "mssql": "^4.0.4",
+    "path": "^0.12.7",
+    "util": "^0.10.3"
+  }
+}

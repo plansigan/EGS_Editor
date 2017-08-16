@@ -1,0 +1,94 @@
+<% include ../partials/header%>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div class="container">
+        <div class="row">
+          <div class="container">
+            <h1 class="text-center">View Product: "<%=data[0][0].Name%>"</h1>
+            <br>
+            <label for="Name">Name:</label>
+            <p><%=data[0][0].Name%></p>
+            <label for="Number">Number:</label>
+            <p><%=data[0][0].Number%></p>
+            <label for="Supplier">Supplier:</label>
+            <p><%=data[0][0].Supplier%></p>
+            <label for="Category">Category:</label>
+            <p><%=data[0][0].Category%></p>
+            <label for="Brand">Brand:</label>
+            <p><%=data[0][0].Brand%></p>
+            <label for="Description">Description:</label>
+            <p><%=data[0][0].Description%></p>
+            <label for="Declaration">Declaration:</label>
+            <p><%=data[0][0].Declaration%></p>
+            <label for="Ingredients">Ingredients:</label>
+            <p><%=data[0][0].Ingredients%></p>
+            <label for="Preparation">Preparation:</label>
+            <p><%=data[0][0].Preparation%></p>
+            <label for="CookingTip">CookingTip:</label>
+            <p><%=data[0][0].CookingTip%></p>
+            <label for="Refinement">Refinement:</label>
+            <p><%=data[0][0].Refinement%></p>
+            <label for="Storage">Storage:</label>
+            <p><%=data[0][0].Storage%></p>
+            <label for="Productivity">Productivity:</label>
+            <p><%=data[0][0].Productivity%></p>
+            <label for="Country of Origin">Country of Origin:</label>
+            <p><%=data[0][0].CountryOrigin%></p>
+            <label for="Attachment">Attachment:</label>
+            <p><%=data[0][0].Attachment%></p>
+            <label for="Specific Determination">Specific Determination:</label>
+            <p><%=data[0][0].SpecificDetermination%></p>
+            <label for="Allergens">Allergens:</label>
+            <p><%=data[0][0].Allergens%></p>
+            <label for="Barcode">Barcode:</label>
+            <p><%=data[0][0].Barcode%></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="container">
+            <%if(data[1].length > 0){%>
+              <h3>Clients</h3>
+            <%}%>
+            <%data[1].forEach((client)=>{%>
+              <div class="col-md-4">
+                <h4><%=client.Name%></h4>
+                <div class="col-md-12">
+                  <label for="price1">Price1: </label>
+                  <div class="ui right labeled input">
+                    <span><%=client.Price1%> <%=client.Unit1%></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="price2">Price2: </label>
+                  <div class="ui right labeled input">
+                    <span><%=client.Price2%> <%=client.Unit2%></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="price3">Price3: </label>
+                  <div class="ui right labeled input">
+                    <span><%=client.Price3%> <%=client.Unit3%></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="price4">Price4: </label>
+                  <div class="ui right labeled input">
+                    <span><%=client.Price4%> <%=client.Unit4%></span>
+                  </div>
+                </div>
+              </div>
+            <%})%>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="container">
+        <a href="/products/<%=data[0][0].Code%>/edit" class="btn btn-info" style="margin-right:1%;">Edit Product</a>
+        <a href="/products" class="btn btn-primary">Back to List</a>
+      </div>
+    </div>
+  </div>
+</div>
+<% include ../partials/footer%>
