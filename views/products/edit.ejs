@@ -1,8 +1,8 @@
 <% include ../partials/header%>
-<div class="container">
+<div class="ui container">
   <br>
-    <div class="container">
-      <h2 class="text-center">Edit Product: "<%=data[0][0].Name%>"</h2>
+    <div class="ui container center aligned">
+      <h2>Edit Product: "<%=data[0][0].Name%>"</h2>
     </div>
     <br>
     <div class="ui divider">
@@ -94,7 +94,7 @@
           <br>
           <div class="ui grid">
             <%data[1].forEach((client)=>{%>
-              <input class='hidden' type="text" name="price[ClientCode]" value="<%=client.ClientCode%>">
+              <input class="hidden" type="text" name="price[ClientCode]" value="<%=client.ClientCode%>">
               <div class="four wide  columns">
                 <h4><%=client.Name%></h4>
                 <div class="field">
@@ -140,7 +140,7 @@
         <br>
         <div class="ui form">
           <button class="ui button green" style="float:left;margin-right:1%">Save</button>
-          <a href="/products/<%=data[0][0].Code%>/view" class="ui button blue">Back to View</a>
+          <a href="#" onclick="window.history.back()" class="ui button blue">Back to View</a>
         </div>
       </form>
 </div>

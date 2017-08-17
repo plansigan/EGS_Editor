@@ -1,19 +1,19 @@
 <% include ../partials/header%>
 <script src="/product/product.js"></script>
-<div class="col-md-12">
-  <div class="container">
+<div class="twelve wide field" ng-app="product" ng-controller="productController">
+  <br>
+  <div class="ui container">
     <h1>List of Products</h1>
     <br>
-    <div ng-app="product" ng-controller="productController"/>
       <form ng-submit="search()">
         <div class="ui search">
           <div class="ui icon input">
-            <input class="prompt" placeholder="Find product base on columns provided" type="text" ng-model="searchName">
+            <input class="prompt inputSearch" placeholder="Find Product" type="text" ng-model="searchName" data-content="Search for any of the columns provided">
             <i class="search icon"></i>
           </div>
         </div>
       </form>
-      <table id="Datatable" class="ui celled table header-fixed" width="100%">
+      <table id="Datatable" class="ui fixed single line celled table header-fixed" width="100%">
         <thead>
           <th>Number</th>
           <th>Name</th>
@@ -23,31 +23,139 @@
         </thead>
         <tbody class="list">
           <tr ng-repeat="product in data">
-            <td><a class="number" href="/products/{{product.Code}}/view">{{ product.Number }}</a></td>
-            <td><a class="name" href="/products/{{product.Code}}/view">{{ product.Name }}</a></td>
-            <td><a class="supplier" href="/products/{{product.Code}}/view">{{ product.Supplier }}</a></td>
-            <td><a class="category" href="/products/{{product.Code}}/view">{{ product.Category }}</a></td>
+            <td><a ng-click="openViewModal(product.Code)" class="number view_btn" href="#">{{ product.Number }}</a></td>
+            <td><a ng-click="openViewModal(product.Code)" class="name view_btn" href="#">{{ product.Name }}</a></td>
+            <td><a ng-click="openViewModal(product.Code)" class="supplier view_btn" href="#">{{ product.Supplier }}</a></td>
+            <td><a ng-click="openViewModal(product.Code)" class="category view_btn" href="#">{{ product.Category }}</a></td>
             <td><a class="lastupdate" href="/products/{{product.Code}}/view">{{ product.LastUpdated }}</a></td>
           </tr>
         </tbody>
       </table>
-    </div>
     <br>
-      <div class="col-xs-12">
-        <div class="panel panel-default">
+      <div class="twelve wide field">
+        <div class="ui raised segment ">
           <div class="panel-body">
-            <span class="glyphicon glyphicon-cloud-upload"></span>
+            <span class="upload icon"></span>
             <h2>Upload CSV to Database</h2>
             <h4>CSV required!</h4>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar"></div>
+            <div class="ui progress">
+              <div class="bar" role="progressbar"></div>
             </div>
-            <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+            <button class="ui secondary button upload-btn" type="button">Upload File</button>
           </div>
         </div>
       </div>
     <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
   </div>
+
+
+  <!-- VIEW PAGE MODAL -->
+  <div id="viewPage" class="ui modal">
+    <div class="ui segment">
+      <h3 class="ui header center aligned">{{dataView[0][0].Name}}</h3>
+      <br>
+      <div class="ui grid">
+        <div class="ten wide column">
+          <h4 class="ui header">Name</h4>
+          <p>{{dataView[0][0].Name}}</p>
+        </div>
+        <div class="six wide column">
+          <h4 class="ui header">Number</h4>
+          <p>{{dataView[0][0].Number}}</p>
+        </div>
+        <div class="ten wide column">
+          <h4 class="ui header">Supplier</h4>
+          <p>{{dataView[0][0].Supplier}}</p>
+        </div>
+        <div class="six wide column">
+          <h4 class="ui header">Category</h4>
+          <p>{{dataView[0][0].Category}}</p>
+        </div>
+        <div class="ten wide column">
+          <h4 class="ui header">Allergens</h4>
+          <p>{{dataView[0][0].Allergens}}</p>
+        </div>
+        <div class="six wide column">
+          <h4 class="ui header">Barcode</h4>
+          <p>{{dataView[0][0].Barcode}}</p>
+        </div>
+        <div class="ten wide column">
+          <h4 class="ui header">Productivity</h4>
+          <p>{{dataView[0][0].Productivity}}</p>
+        </div>
+        <div class="six wide column">
+          <h4 class="ui header">Country of Origin</h4>
+          <p>{{dataView[0][0].CountryOrigin}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Brand</h4>
+          <p>{{dataView[0][0].Brand}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Declaration</h4>
+          <p>{{dataView[0][0].Declaration}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Cooking Tip</h4>
+          <p>{{dataView[0][0].CookingTip}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Refinement</h4>
+          <p>{{dataView[0][0].Refinement}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Storage</h4>
+          <p>{{dataView[0][0].Storage}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Attachment</h4>
+          <p>{{dataView[0][0].Attachment}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Specific Determination</h4>
+          <p>{{dataView[0][0].SpecificDetermination}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Description</h4>
+          <p>{{dataView[0][0].Description}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Ingredients</h4>
+          <p>{{dataView[0][0].Ingredients}}</p>
+        </div>
+        <div class="sixteen wide column">
+          <h4 class="ui header">Preparation</h4>
+          <p>{{dataView[0][0].Preparation}}</p>
+        </div>
+        {{}}
+        <h2>Clients</h2>
+        <div class="segment four wide column" ng-repeat="client in dataView[1]">
+          <h3 class="header">{{client.Name}}</h3>
+          <div class="four wide column">
+            <h4 class="ui header">Price1</h4>
+            <p>{{client.Price1}}/{{client.Unit1}}</p>
+          </div>
+          <div class="four wide column">
+            <h4 class="ui header">Price2</h4>
+            <p>{{client.Price2}}/{{client.Unit2}}</p>
+          </div>
+          <div class="four wide column">
+            <h4 class="ui header">Price3</h4>
+            <p>{{client.Price3}}/{{client.Unit3}}</p>
+          </div>
+          <div class="four wide column">
+            <h4 class="ui header">Price4</h4>
+            <p>{{client.Price4}}/{{client.Unit4}}</p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="ui container">
+        <a href="/products/{{dataView[0][0].Code}}/edit" class="ui secondary button" style="margin-right:1%;">Edit Product</a>
+        <button href="#" class="ui button" ng-click="closeModal()">Back to List</button>
+      </div>
+    </div>
 </div>
+
 
 <% include ../partials/footer%>

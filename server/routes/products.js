@@ -68,7 +68,7 @@ router.put("/:code",(req,res)=>{
      }
    }
    //console.log(query)
-   helperFunction.executeandRedirect(req,res,query,`${req.params.code}/view`)
+   helperFunction.executeandRedirect(req,res,query,`/products`)
 })
 
 

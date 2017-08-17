@@ -14,4 +14,8 @@ $(document).ready(function(){
   $table.find('thead tr').children().each(function(i, v) {
       $(v).width(colWidth[i]);
   });
+
+
+  //CLASS HELPERS
+  $('.hidden').hide();
 })

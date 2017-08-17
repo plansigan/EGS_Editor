@@ -79,9 +79,9 @@ helperFunction.executeAndResponseQueryToJSON = (res,query)=>{
           sql.close()
           res.send(err);
         } else {
-          Datatable = _.concat(result.recordsets[0])
+          Datatable = _.concat(result.recordsets)
           res.json({Datatable});
-          console.log(Datatable)
+          console.log(result.recordsets)
           sql.close()
         }
       })
