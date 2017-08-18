@@ -27,6 +27,7 @@ router.get("/:code/edit",(req,res)=>{
 
 //SAVE EDITED PRODUCT
 router.put("/:code",(req,res)=>{
+  console.log(req.body)
    var query = `UPDATE EgswProduct set Name = N'${req.body.product.name}',
    --Number = '${req.body.product.number}',
    Supplier = '${req.body.product.supplier}',

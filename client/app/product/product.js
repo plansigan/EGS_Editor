@@ -1,13 +1,12 @@
-var app = angular.module('product',[]);
+var app = angular.module('product',['ngSanitize']);
 
-app.controller('productController',($scope,$http)=>{
-
+app.controller('productController',($scope,$http,$sce)=>{
   //modal initialization
-  $('.inputSearch').popup({
+  $('.inputInfo').popup({
     on: 'focus'
   });
-  $('.viewPage').modal({
-    closeable:true
+  $('.buttonInfo').popup({
+    hoverable: true
   });
 
   $scope.sortType = 'name';
@@ -16,7 +15,6 @@ app.controller('productController',($scope,$http)=>{
   $scope.closeModal = ()=>{
     $('#viewPage').modal('hide')
   }
-
   //open modal on click list
   $scope.openViewModal = (newCode)=>{
     $http.get('/products/' + newCode + '/json/view').then((response)=>{
@@ -24,6 +22,15 @@ app.controller('productController',($scope,$http)=>{
       $('#viewPage').modal('show')
     })
   };
+
+  $scope.editProduct = (newCode)=>{
+    $http.get('/products/' + newCode + '/json/edit').then((response)=>{
+      $scope.dataEdit = response.data.Datatable;
+      var actionURL = "/products/"+$scope.dataEdit[0][0].Code+"?_method=PUT";
+      $scope.formAction = $sce.trustAsResourceUrl(actionURL);
+      $('#editPage').modal('show')
+    })
+  }
 
   //search product
   $scope.search = ()=>{

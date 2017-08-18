@@ -8,7 +8,7 @@
       <form ng-submit="search()">
         <div class="ui search">
           <div class="ui icon input">
-            <input class="prompt inputSearch" placeholder="Find Product" type="text" ng-model="searchName" data-content="Search for any of the columns provided">
+            <input class="prompt inputInfo" placeholder="Find Product" type="text" ng-model="searchName" data-content="Search for any of the columns provided">
             <i class="search icon"></i>
           </div>
         </div>
@@ -27,7 +27,8 @@
             <td><a ng-click="openViewModal(product.Code)" class="name view_btn" href="#">{{ product.Name }}</a></td>
             <td><a ng-click="openViewModal(product.Code)" class="supplier view_btn" href="#">{{ product.Supplier }}</a></td>
             <td><a ng-click="openViewModal(product.Code)" class="category view_btn" href="#">{{ product.Category }}</a></td>
-            <td><a class="lastupdate" href="/products/{{product.Code}}/view">{{ product.LastUpdated }}</a></td>
+            <td><a ng-click="openViewModal(product.Code)" class="lastupdate" href="#">{{ product.LastUpdated }}</a></td>
+            <!-- <td><a class="lastupdate" href="/products/{{product.Code}}/view">{{ product.LastUpdated }}</a></td> -->
           </tr>
         </tbody>
       </table>
@@ -41,7 +42,7 @@
             <div class="ui progress">
               <div class="bar" role="progressbar"></div>
             </div>
-            <button class="ui secondary button upload-btn" type="button">Upload File</button>
+            <button class="ui secondary button upload-btn buttonInfo" type="button" data-content="Upload csv file to update EGS PIM database">Upload File</button>
           </div>
         </div>
       </div>
@@ -50,111 +51,262 @@
 
 
   <!-- VIEW PAGE MODAL -->
-  <div id="viewPage" class="ui modal">
-    <div class="ui segment">
-      <h3 class="ui header center aligned">{{dataView[0][0].Name}}</h3>
-      <br>
-      <div class="ui grid">
-        <div class="ten wide column">
-          <h4 class="ui header">Name</h4>
-          <p>{{dataView[0][0].Name}}</p>
-        </div>
-        <div class="six wide column">
-          <h4 class="ui header">Number</h4>
-          <p>{{dataView[0][0].Number}}</p>
-        </div>
-        <div class="ten wide column">
-          <h4 class="ui header">Supplier</h4>
-          <p>{{dataView[0][0].Supplier}}</p>
-        </div>
-        <div class="six wide column">
-          <h4 class="ui header">Category</h4>
-          <p>{{dataView[0][0].Category}}</p>
-        </div>
-        <div class="ten wide column">
-          <h4 class="ui header">Allergens</h4>
-          <p>{{dataView[0][0].Allergens}}</p>
-        </div>
-        <div class="six wide column">
-          <h4 class="ui header">Barcode</h4>
-          <p>{{dataView[0][0].Barcode}}</p>
-        </div>
-        <div class="ten wide column">
-          <h4 class="ui header">Productivity</h4>
-          <p>{{dataView[0][0].Productivity}}</p>
-        </div>
-        <div class="six wide column">
-          <h4 class="ui header">Country of Origin</h4>
-          <p>{{dataView[0][0].CountryOrigin}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Brand</h4>
-          <p>{{dataView[0][0].Brand}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Declaration</h4>
-          <p>{{dataView[0][0].Declaration}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Cooking Tip</h4>
-          <p>{{dataView[0][0].CookingTip}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Refinement</h4>
-          <p>{{dataView[0][0].Refinement}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Storage</h4>
-          <p>{{dataView[0][0].Storage}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Attachment</h4>
-          <p>{{dataView[0][0].Attachment}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Specific Determination</h4>
-          <p>{{dataView[0][0].SpecificDetermination}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Description</h4>
-          <p>{{dataView[0][0].Description}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Ingredients</h4>
-          <p>{{dataView[0][0].Ingredients}}</p>
-        </div>
-        <div class="sixteen wide column">
-          <h4 class="ui header">Preparation</h4>
-          <p>{{dataView[0][0].Preparation}}</p>
-        </div>
-        {{}}
-        <h2>Clients</h2>
-        <div class="segment four wide column" ng-repeat="client in dataView[1]">
-          <h3 class="header">{{client.Name}}</h3>
-          <div class="four wide column">
-            <h4 class="ui header">Price1</h4>
-            <p>{{client.Price1}}/{{client.Unit1}}</p>
-          </div>
-          <div class="four wide column">
-            <h4 class="ui header">Price2</h4>
-            <p>{{client.Price2}}/{{client.Unit2}}</p>
-          </div>
-          <div class="four wide column">
-            <h4 class="ui header">Price3</h4>
-            <p>{{client.Price3}}/{{client.Unit3}}</p>
-          </div>
-          <div class="four wide column">
-            <h4 class="ui header">Price4</h4>
-            <p>{{client.Price4}}/{{client.Unit4}}</p>
-          </div>
-        </div>
+<div id="viewPage" class="ui modal">
+  <div class="ui form segment">
+    <div class="ui container center aligned">
+      <h2>View Product: "{{dataView[0][0].Name}}"</h2>
+    </div>
+    <br>
+    <div class="ui grid">
+      <div class="ten wide column">
+        <h4 class="ui header">Name</h4>
+        <p>{{dataView[0][0].Name}}</p>
+      </div>
+      <div class="six wide column">
+        <h4 class="ui header">Number</h4>
+        <p>{{dataView[0][0].Number}}</p>
+      </div>
+      <div class="ten wide column">
+        <h4 class="ui header">Supplier</h4>
+        <p>{{dataView[0][0].Supplier}}</p>
+      </div>
+      <div class="six wide column">
+        <h4 class="ui header">Category</h4>
+        <p>{{dataView[0][0].Category}}</p>
+      </div>
+      <div class="ten wide column">
+        <h4 class="ui header">Allergens</h4>
+        <p>{{dataView[0][0].Allergens}}</p>
+      </div>
+      <div class="six wide column">
+        <h4 class="ui header">Barcode</h4>
+        <p>{{dataView[0][0].Barcode}}</p>
+      </div>
+      <div class="ten wide column">
+        <h4 class="ui header">Productivity</h4>
+        <p>{{dataView[0][0].Productivity}}</p>
+      </div>
+      <div class="six wide column">
+        <h4 class="ui header">Country of Origin</h4>
+        <p>{{dataView[0][0].CountryOrigin}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Brand</h4>
+        <p>{{dataView[0][0].Brand}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Declaration</h4>
+        <p>{{dataView[0][0].Declaration}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Cooking Tip</h4>
+        <p>{{dataView[0][0].CookingTip}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Refinement</h4>
+        <p>{{dataView[0][0].Refinement}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Storage</h4>
+        <p>{{dataView[0][0].Storage}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Attachment</h4>
+        <p>{{dataView[0][0].Attachment}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Specific Determination</h4>
+        <p>{{dataView[0][0].SpecificDetermination}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Description</h4>
+        <p>{{dataView[0][0].Description}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Ingredients</h4>
+        <p>{{dataView[0][0].Ingredients}}</p>
+      </div>
+      <div class="sixteen wide column">
+        <h4 class="ui header">Preparation</h4>
+        <p>{{dataView[0][0].Preparation}}</p>
       </div>
       <br>
-      <div class="ui container">
-        <a href="/products/{{dataView[0][0].Code}}/edit" class="ui secondary button" style="margin-right:1%;">Edit Product</a>
-        <button href="#" class="ui button" ng-click="closeModal()">Back to List</button>
+      <div class="sixteen wide column">
+        <h3 class="ui dividing header">Clients</h3>
+      </div>
+      <br>
+      <div class="segment four wide column" ng-repeat="client in dataView[1]">
+        <h3 class="header">{{client.Name}}</h3>
+        <div class="four wide column">
+          <h4 class="ui header">Price1</h4>
+          <p>{{client.Price1}}/{{client.Unit1}}</p>
+        </div>
+        <div class="four wide column">
+          <h4 class="ui header">Price2</h4>
+          <p>{{client.Price2}}/{{client.Unit2}}</p>
+        </div>
+        <div class="four wide column">
+          <h4 class="ui header">Price3</h4>
+          <p>{{client.Price3}}/{{client.Unit3}}</p>
+        </div>
+        <div class="four wide column">
+          <h4 class="ui header">Price4</h4>
+          <p>{{client.Price4}}/{{client.Unit4}}</p>
+        </div>
       </div>
     </div>
+    <br>
+    <div class="ui form">
+      <a class="ui secondary button" style="margin-right:1%;" href="#" ng-click="editProduct(dataView[0][0].Code)">Edit Product</a>
+      <button href="#" class="ui button" ng-click="closeModal()">Back to List</button>
+    </div>
+  </div>
+</div>
+
+<div id="editPage" class="ui modal">
+  <div class="ui container">
+      <br>
+        <div class="ui container center aligned">
+          <h2>Edit Product: "{{dataEdit[0][0].Name}}"</h2>
+        </div>
+        <br>
+        <form class="ui form segment" action="{{formAction}}" method="POST">
+          <div class="two fields">
+            <div class="twelve wide field">
+              <label for="Name">Name:</label>
+              <input class="form-control" type="text" name="product[name]" value="{{dataEdit[0][0].Name}}">
+            </div>
+            <div class="four wide field">
+              <label for="Number">Number:</label>
+              <input class="form-control" type="text" name="product[number]" value="{{dataEdit[0][0].Number}}"  disabled>
+            </div>
+          </div>
+          <div class="two fields">
+            <div class="twelve wide field">
+              <label for="Supplier">Supplier:</label>
+              <input class="form-control" type="text" name="product[supplier]" value="{{dataEdit[0][0].Supplier}}">
+            </div>
+            <div class="four wide field">
+              <label for="Category">Category:</label>
+              <input class="form-control" type="text" name="product[category]" value="{{dataEdit[0][0].Category}}">
+            </div>
+          </div>
+          <div class="two fields">
+            <div class="twelve wide field">
+              <label for="Allergens">Allergens:</label>
+              <input class="form-control" type="text" name="product[allergens]" value="{{dataEdit[0][0].Allergens}}">
+            </div>
+            <div class="four wide field">
+              <label for="Barcode">Barcode:</label>
+              <input class="form-control" type="text" name="product[barcode]" value="{{dataEdit[0][0].Barcode}}">
+            </div>
+          </div>
+          <div class="two fields">
+            <div class="twelve wide field">
+              <label for="Productivity">Productivity:</label>
+              <input class="form-control" type="text" name="product[productivity]" value="{{dataEdit[0][0].Productivity}}">
+            </div>
+            <div class="four wide field">
+              <label for="CountryOfOrigin">Country of Origin:</label>
+              <input class="form-control" type="text" name="product[countryOfOrigin]" value="{{dataEdit[0][0].CountryOrigin}}">
+            </div>
+          </div>
+          <div class="field">
+            <label for="Brand">Brand:</label>
+            <input class="form-control" type="text" name="product[brand]" value="{{dataEdit[0][0].Brand}}">
+          </div>
+          <div class="field">
+            <label for="Declaration">Declaration:</label>
+            <input class="form-control" type="text" name="product[declaration]" value="{{dataEdit[0][0].Declaration}}">
+          </div>
+          <div class="field">
+            <label for="CookingTip">Cooking Tip:</label>
+            <input class="form-control" type="text" name="product[cookingTip]" value="{{dataEdit[0][0].CookingTip}}">
+          </div>
+          <div class="field">
+            <label for="Refinement">Refinement:</label>
+            <input class="form-control" type="text" name="product[refinement]" value="{{dataEdit[0][0].Refinement}}">
+          </div>
+          <div class="field">
+            <label for="Storage">Storage:</label>
+            <input class="form-control" type="text" name="product[storage]" value="{{dataEdit[0][0].Storage}}">
+          </div>
+          <div class="field">
+            <label for="Attachment">Attachment:</label>
+            <input class="form-control" type="text" name="product[attachment]" value="{{dataEdit[0][0].Attachment}}">
+          </div>
+          <div class="field">
+            <label for="SpecificDetermination">Specific Determination:</label>
+            <input class="form-control" type="text" name="product[specificDetermination]" value="{{dataEdit[0][0].SpecificDetermination}}">
+          </div>
+          <div class="field">
+            <label for="Description">Description:</label>
+            <textarea rows="2" class="form-control" name="product[description]">{{dataEdit[0][0].Description}}</textarea>
+          </div>
+          <div class="field">
+            <label for="Ingredients">Ingredients:</label>
+            <textarea rows="2" class="form-control" name="product[ingredients]">{{dataEdit[0][0].Ingredients}}</textarea>
+          </div>
+          <div class="field">
+            <label for="Preparation">Preparation:</label>
+            <textarea rows="2" class="form-control" name="product[preparation]">{{dataEdit[0][0].Preparation}}</textarea>
+          </div>
+          <div class="field">
+              <h3 class="ui dividing header">Clients</h3>
+            <br>
+            <div class="ui grid">
+                <div class="four wide columns" ng-repeat="client in dataEdit[1]">
+                  <h4>{{client.Name}}</h4>
+                  <script type="text/javascript">
+                    $('.hidden').hide();
+                  </script>
+                  <input class="hidden" type="text" name="price[ClientCode]" value="{{client.ClientCode}}">
+                  <div class="field">
+                    <label for="Price1">Price1</label>
+                    <div class="ui right labeled input">
+                      <input placeholder="Price1" type="text" name="price[price1]" value="{{client.Price1}}">
+                      <div class="ui basic label">
+                        {{client.Unit1}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="Price2">Price2</label>
+                    <div class="ui right labeled input">
+                      <input placeholder="Price2" type="text" name="price[price2]" value="{{client.Price2}}">
+                      <div class="ui basic label">
+                        {{client.Unit2}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="Price3">Price3</label>
+                    <div class="ui right labeled input">
+                      <input placeholder="Price3" type="text" name="price[price3]" value="{{client.Price3}}">
+                      <div class="ui basic label">
+                        {{client.Unit3}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="Price4">Price4</label>
+                    <div class="ui right labeled input">
+                      <input placeholder="Price4" type="text" name="price[price4]" value="{{client.Price4}}">
+                      <div class="ui basic label">
+                        {{client.Unit4}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <br>
+          <div class="ui form">
+            <button class="ui button green" style="float:left;margin-right:1%">Save</button>
+            <a href="/products" class="ui button blue">Back to List</a>
+          </div>
+        </form>
+  </div>
 </div>
 
 

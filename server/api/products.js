@@ -39,8 +39,17 @@ if(req.params.name == ''){
   helperFunction.executeAndResponseQueryToJSON(res,query);
 })
 
-//View ONE PRODUCT in JSON
+//View ONE PRODUCT in json
 router.get("/:code/json/view",(req,res)=>{
+  var query = `select * from EgswProduct where Code = ${req.params.code}
+  select * from egswClient C
+  inner join EgswProductPrice PP on C.code = PP.ClientCode
+  where pp.Productcode = ${req.params.code}`;
+  helperFunction.executeAndResponseQueryToJSON(res,query)
+})
+
+//EDIT ONE PRODUCT in json
+router.get("/:code/json/edit",(req,res)=>{
   var query = `select * from EgswProduct where Code = ${req.params.code}
   select * from egswClient C
   inner join EgswProductPrice PP on C.code = PP.ClientCode
