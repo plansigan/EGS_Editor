@@ -1,4 +1,4 @@
-var app = angular.module('product',['ngSanitize','ngFlash']);
+var app = angular.module('product',['ngSanitize','ngFlash','ngAnimate']);
 
 app.controller('productController',($scope,$http,$sce,Flash)=>{
   //modal initialization
