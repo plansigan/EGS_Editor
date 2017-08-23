@@ -11,7 +11,7 @@ var helperFunction    = {},
 
 const async   = require('async');
 
-helperFunction.executeandRedirect = (req,res,query,page)=>{
+helperFunction.executeQuery = (req,res,query,page)=>{
   sql.connect(localEnvironment.dbConfig,(err)=>{
     if(err){
       req.flash("error","Error Connecting to Database" + err)
@@ -19,17 +19,17 @@ helperFunction.executeandRedirect = (req,res,query,page)=>{
       res.send(err)
     } else {
       var request = new sql.Request();
-      request.query(query,(err,result)=>{
+      request.query(query).then((err,result=>{
         if(err){
-          req.flash("error","Error while querying database:- " + err)
-          sql.close()
-          console.log("Error while querying database:- " + err);
-          res.send(err);
+          console.log('Error while querying database- ' + err)
         } else {
-          req.flash('success',"Product saved!")
+          console.log(result)
           res.redirect(page)
           sql.close()
         }
+      })).catch(err=>{
+          res.status(500).send({message:`${err}`})
+          sql.close();
       })
     }
   })

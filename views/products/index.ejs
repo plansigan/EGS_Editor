@@ -163,6 +163,7 @@
   </div>
 </div>
 
+<!-- EDIT PAGE MODAL -->
 <div id="editPage" class="ui modal">
   <div class="ui container">
       <br>
@@ -170,25 +171,25 @@
           <h2>Edit Product: "{{dataEdit[0][0].Name}}"</h2>
         </div>
         <br>
-        <form class="ui form segment" action="{{formAction}}" method="POST">
+        <form name="form" class="ui form segment">
           <div class="two fields">
             <div class="twelve wide field">
               <label for="Name">Name:</label>
-              <input class="form-control" type="text" name="product[name]" value="{{dataEdit[0][0].Name}}">
+              <input class="form-control" type="text" ng-model="product.Name" name="product[name]">
             </div>
             <div class="four wide field">
               <label for="Number">Number:</label>
-              <input class="form-control" type="text" name="product[number]" value="{{dataEdit[0][0].Number}}"  disabled>
+              <input class="form-control" type="text" ng-model="product.Number" name="product[number]"  disabled>
             </div>
           </div>
           <div class="two fields">
             <div class="twelve wide field">
               <label for="Supplier">Supplier:</label>
-              <input class="form-control" type="text" name="product[supplier]" value="{{dataEdit[0][0].Supplier}}">
+              <input class="form-control" type="text" ng-model="product.Supplier" name="product[supplier]">
             </div>
             <div class="four wide field">
               <label for="Category">Category:</label>
-              <input class="form-control" type="text" name="product[category]" value="{{dataEdit[0][0].Category}}">
+              <input class="form-control" type="text" ng-model="product.Category" name="product[category]">
             </div>
           </div>
           <div class="two fields">
@@ -204,52 +205,52 @@
           <div class="two fields">
             <div class="twelve wide field">
               <label for="Productivity">Productivity:</label>
-              <input class="form-control" type="text" name="product[productivity]" value="{{dataEdit[0][0].Productivity}}">
+              <input class="form-control" type="text" ng-model="product.Productivity" name="product[productivity]">
             </div>
             <div class="four wide field">
               <label for="CountryOfOrigin">Country of Origin:</label>
-              <input class="form-control" type="text" name="product[countryOfOrigin]" value="{{dataEdit[0][0].CountryOrigin}}">
+              <input class="form-control" type="text" ng-model="product.CountryOrigin" name="product[countryOfOrigin]">
             </div>
           </div>
           <div class="field">
             <label for="Brand">Brand:</label>
-            <input class="form-control" type="text" name="product[brand]" value="{{dataEdit[0][0].Brand}}">
+            <input class="form-control" type="text" ng-model="product.Brand" name="product[brand]">
           </div>
           <div class="field">
             <label for="Declaration">Declaration:</label>
-            <input class="form-control" type="text" name="product[declaration]" value="{{dataEdit[0][0].Declaration}}">
+            <input class="form-control" type="text" ng-model="product.Declaration" name="product[declaration]">
           </div>
           <div class="field">
             <label for="CookingTip">Cooking Tip:</label>
-            <input class="form-control" type="text" name="product[cookingTip]" value="{{dataEdit[0][0].CookingTip}}">
+            <input class="form-control" type="text" ng-model="product.CookingTip" name="product[cookingTip]">
           </div>
           <div class="field">
             <label for="Refinement">Refinement:</label>
-            <input class="form-control" type="text" name="product[refinement]" value="{{dataEdit[0][0].Refinement}}">
+            <input class="form-control" type="text" ng-model="product.Refinement" name="product[refinement]">
           </div>
           <div class="field">
             <label for="Storage">Storage:</label>
-            <input class="form-control" type="text" name="product[storage]" value="{{dataEdit[0][0].Storage}}">
+            <input class="form-control" type="text" ng-model="product.Storage" name="product[storage]">
           </div>
           <div class="field">
             <label for="Attachment">Attachment:</label>
-            <input class="form-control" type="text" name="product[attachment]" value="{{dataEdit[0][0].Attachment}}">
+            <input class="form-control" type="text" ng-model="product.Attachment" name="product[attachment]">
           </div>
           <div class="field">
             <label for="SpecificDetermination">Specific Determination:</label>
-            <input class="form-control" type="text" name="product[specificDetermination]" value="{{dataEdit[0][0].SpecificDetermination}}">
+            <input class="form-control" type="text" ng-model="product.SpecificDetermination" name="product[specificDetermination]">
           </div>
           <div class="field">
             <label for="Description">Description:</label>
-            <textarea rows="2" class="form-control" name="product[description]">{{dataEdit[0][0].Description}}</textarea>
+            <textarea rows="2" class="form-control" ng-model="product.Description" name="product[description]"></textarea>
           </div>
           <div class="field">
             <label for="Ingredients">Ingredients:</label>
-            <textarea rows="2" class="form-control" name="product[ingredients]">{{dataEdit[0][0].Ingredients}}</textarea>
+            <textarea rows="2" class="form-control" ng-model="product.Ingredients" name="product[ingredients]"></textarea>
           </div>
           <div class="field">
             <label for="Preparation">Preparation:</label>
-            <textarea rows="2" class="form-control" name="product[preparation]">{{dataEdit[0][0].Preparation}}</textarea>
+            <textarea rows="2" class="form-control" ng-model="product.Preparation" name="product[preparation]"></textarea>
           </div>
           <div class="field">
               <h3 class="ui dividing header">Clients</h3>
@@ -264,7 +265,7 @@
                   <div class="field">
                     <label for="Price1">Price1</label>
                     <div class="ui right labeled input">
-                      <input placeholder="Price1" type="text" name="price[price1]" value="{{client.Price1}}">
+                      <input placeholder="Price1" type="text" ng-model="dataEdit[1][$index].Price1" name="price1[price1]" value="{{client.Price1}}">
                       <div class="ui basic label">
                         {{client.Unit1}}
                       </div>
@@ -273,7 +274,7 @@
                   <div class="field">
                     <label for="Price2">Price2</label>
                     <div class="ui right labeled input">
-                      <input placeholder="Price2" type="text" name="price[price2]" value="{{client.Price2}}">
+                      <input placeholder="Price2" ng-model="dataEdit[1][$index].Price2" type="text" name="price[price2]" value="{{client.Price2}}">
                       <div class="ui basic label">
                         {{client.Unit2}}
                       </div>
@@ -282,7 +283,7 @@
                   <div class="field">
                     <label for="Price3">Price3</label>
                     <div class="ui right labeled input">
-                      <input placeholder="Price3" type="text" name="price[price3]" value="{{client.Price3}}">
+                      <input placeholder="Price3" ng-model="dataEdit[1][$index].Price3" type="text" name="price[price3]" value="{{client.Price3}}">
                       <div class="ui basic label">
                         {{client.Unit3}}
                       </div>
@@ -291,7 +292,7 @@
                   <div class="field">
                     <label for="Price4">Price4</label>
                     <div class="ui right labeled input">
-                      <input placeholder="Price4" type="text" name="price[price4]" value="{{client.Price4}}">
+                      <input placeholder="Price4" ng-model="dataEdit[1][$index].Price4" type="text" name="price[price4]" value="{{client.Price4}}">
                       <div class="ui basic label">
                         {{client.Unit4}}
                       </div>
@@ -301,9 +302,13 @@
             </div>
           </div>
           <br>
+          <flash-message duration="5000">
+          </flash-message>
           <div class="ui form">
-            <button class="ui button green" style="float:left;margin-right:1%">Save</button>
-            <a href="/products" class="ui button blue">Back to List</a>
+            <!-- <button class="ui button green" style="float:left;margin-right:1%">Save</button>
+            <a href="/products" class="ui button blue">Back to List</a> -->
+            <button class="ui button green" ng-click="saveProduct()" style="float:left;margin-right:1%">Save</button>
+            <a href="#" ng-click='openViewModal(product.Code)' class="ui button blue">Back to View</a>
           </div>
         </form>
   </div>

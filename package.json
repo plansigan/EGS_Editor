@@ -9,6 +9,7 @@
   "author": "Paolo Lansigan",
   "license": "ISC",
   "dependencies": {
+    "angular-flash-alert": "^2.5.0",
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
