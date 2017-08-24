@@ -7,12 +7,14 @@ var express         = require('express'),
     session         = require('express-session'),
     cookieParser    = require('cookie-parser');
 
+let port = process.env.PORT || 3000
+
 // ROUTES VARIABLE
 var productRouter = require('./server/routes/products'),
     csvToDBRouter = require('./server/routes/csvToDB');
 
 //API ROUTES
-var productAPI = require('./server/api/products')
+var productAPI = require('./server/api/products');
 
 //use packages
 app.use(bodyParser.urlencoded({extended: true}));
@@ -49,6 +51,6 @@ app.get('/',(req,res)=>{res.redirect('/products')});
 app.get('*',(req,res)=>{res.send('BAD DOG');});
 
 //SERVER
-app.listen(3000,()=>{
+app.listen(port,()=>{
   console.log('Started port on 3000')
 })
